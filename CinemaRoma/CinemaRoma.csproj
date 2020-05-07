@@ -8,7 +8,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DocumentationFile>C:\Users\i7\source\repos\CinemaRoma\CinemaRoma\CinemaRoma.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>

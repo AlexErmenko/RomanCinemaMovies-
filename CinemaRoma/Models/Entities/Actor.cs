@@ -20,16 +20,24 @@ namespace CinemaRoma.Models
 
         [Display(ResourceType = typeof(Resources) , Name = "ActorFirstName")]
         public string FirstName { get; set; }
+        [Display(ResourceType = typeof(Resources), Name = "ActorMiddleName")]
         public string MiddleName { get; set; }
+        [Display(ResourceType = typeof(Resources), Name = "ActorLastName")]
         public string LastName { get; set; }
 
+        [Display(ResourceType = typeof(Resources), Name = "DateBirth")]
         public DateTime DateBirth { get; set; }
 
         public virtual ICollection<MovieActor> MovieActors { get; set; }
 
+
+
+        [Display(ResourceType = typeof(Resources), Name = "ActorFullName")]
         [NotMapped]
-        [Display(ResourceType = typeof(Resources) , Name = "ActorFullName")]
-        public string FullName { get; set; }
+        public string FullName => $"{MiddleName} {FirstName[0]}.{LastName[0]}.";
+
+
+        public override string ToString() => $"{FullName}";
 
     }
 }

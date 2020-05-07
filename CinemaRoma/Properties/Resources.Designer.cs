@@ -61,6 +61,15 @@ namespace CinemaRoma.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Актер.
+        /// </summary>
+        public static string Actor {
+            get {
+                return ResourceManager.GetString("Actor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Имя.
         /// </summary>
         public static string ActorFirstName {
@@ -75,6 +84,132 @@ namespace CinemaRoma.Properties {
         public static string ActorFullName {
             get {
                 return ResourceManager.GetString("ActorFullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отчество .
+        /// </summary>
+        public static string ActorLastName {
+            get {
+                return ResourceManager.GetString("ActorLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Фамилия.
+        /// </summary>
+        public static string ActorMiddleName {
+            get {
+                return ResourceManager.GetString("ActorMiddleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Адрес.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Кинотеатр.
+        /// </summary>
+        public static string Cinema {
+            get {
+                return ResourceManager.GetString("Cinema", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Дата рождения.
+        /// </summary>
+        public static string DateBirth {
+            get {
+                return ResourceManager.GetString("DateBirth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Дата окончания проката.
+        /// </summary>
+        public static string DateEndRental {
+            get {
+                return ResourceManager.GetString("DateEndRental", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Дата начала проката.
+        /// </summary>
+        public static string DateStartRental {
+            get {
+                return ResourceManager.GetString("DateStartRental", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Описание.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Продолжительность.
+        /// </summary>
+        public static string Duration {
+            get {
+                return ResourceManager.GetString("Duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Жанр.
+        /// </summary>
+        public static string GenreName {
+            get {
+                return ResourceManager.GetString("GenreName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Название Кинотеатра.
+        /// </summary>
+        public static string Location {
+            get {
+                return ResourceManager.GetString("Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Фильм.
+        /// </summary>
+        public static string Movie {
+            get {
+                return ResourceManager.GetString("Movie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Продюсер.
+        /// </summary>
+        public static string Producer {
+            get {
+                return ResourceManager.GetString("Producer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Название.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }
