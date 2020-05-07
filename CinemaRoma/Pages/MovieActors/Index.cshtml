@@ -1,4 +1,5 @@
 ﻿@page
+@using CinemaRoma.Models
 @model CinemaRoma.Pages.MovieActors.IndexModel
 
 @{
@@ -12,18 +13,19 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MovieActor[0].Actor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MovieActor[0].Movie)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MovieActor[0].Actor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MovieActor[0].Movie)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.MovieActor) {
+    @foreach (MovieActor item in Model.MovieActor)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Actor.FirstName)
@@ -37,6 +39,6 @@
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>

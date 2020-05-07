@@ -8,33 +8,58 @@
 <h1>Create</h1>
 
 <h4>Actor</h4>
-<hr />
+<hr/>
 <div class="row">
     <div class="col-md-4">
         <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Actor.FirstName" class="control-label"></label>
-                <input asp-for="Actor.FirstName" class="form-control" />
-                <span asp-validation-for="Actor.FirstName" class="text-danger"></span>
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger">
             </div>
             <div class="form-group">
-                <label asp-for="Actor.MiddleName" class="control-label"></label>
-                <input asp-for="Actor.MiddleName" class="form-control" />
-                <span asp-validation-for="Actor.MiddleName" class="text-danger"></span>
+                <label asp-for="Actor.FirstName"
+                       class="control-label">
+                </label>
+                <input asp-for="Actor.FirstName"
+                       class="form-control"/>
+                <span asp-validation-for="Actor.FirstName"
+                      class="text-danger">
+                </span>
             </div>
             <div class="form-group">
-                <label asp-for="Actor.LastName" class="control-label"></label>
-                <input asp-for="Actor.LastName" class="form-control" />
-                <span asp-validation-for="Actor.LastName" class="text-danger"></span>
+                <label asp-for="Actor.MiddleName"
+                       class="control-label">
+                </label>
+                <input asp-for="Actor.MiddleName"
+                       class="form-control"/>
+                <span asp-validation-for="Actor.MiddleName"
+                      class="text-danger">
+                </span>
             </div>
             <div class="form-group">
-                <label asp-for="Actor.DateBirth" class="control-label"></label>
-                <input asp-for="Actor.DateBirth" class="form-control" type="date"/>
-                <span asp-validation-for="Actor.DateBirth" class="text-danger"></span>
+                <label asp-for="Actor.LastName"
+                       class="control-label">
+                </label>
+                <input asp-for="Actor.LastName"
+                       class="form-control"/>
+                <span asp-validation-for="Actor.LastName"
+                      class="text-danger">
+                </span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="Actor.DateBirth"
+                       class="control-label">
+                </label>
+                <input asp-for="Actor.DateBirth"
+                       class="form-control"
+                       type="date"/>
+                <span asp-validation-for="Actor.DateBirth"
+                      class="text-danger">
+                </span>
+            </div>
+            <div class="form-group">
+                <input type="submit"
+                       value="Create"
+                       class="btn btn-primary"/>
             </div>
         </form>
     </div>
@@ -45,5 +70,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

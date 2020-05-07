@@ -1,39 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
+
+using CinemaRoma.Models;
+
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using CinemaRoma.Models;
 
 namespace CinemaRoma.Pages.Actors
 {
-    public class DetailsModel : PageModel
+  public class DetailsModel : PageModel
+  {
+    private readonly MovieContext _context;
+
+    public Actor Actor { get; set; }
+
+    public DetailsModel(MovieContext context) { _context = context; }
+
+    public async Task<IActionResult> OnGetAsync(int? id)
     {
-        private readonly CinemaRoma.Models.MovieContext _context;
+      if (id == null) return NotFound();
 
-        public DetailsModel(CinemaRoma.Models.MovieContext context)
-        {
-            _context = context;
-        }
+      Actor = await _context.Actors.FirstOrDefaultAsync(m => m.Id == id);
 
-        public Actor Actor { get; set; }
-
-        public async Task<IActionResult> OnGetAsync(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Actor = await _context.Actors.FirstOrDefaultAsync(m => m.Id == id);
-
-            if (Actor == null)
-            {
-                return NotFound();
-            }
-            return Page();
-        }
+      if (Actor == null) return NotFound();
+      return Page();
     }
+  }
 }

@@ -1,4 +1,5 @@
 ﻿@page
+@using CinemaRoma.Models
 @model CinemaRoma.Pages.CinemaMovies.IndexModel
 
 @{
@@ -12,24 +13,25 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CinemaMovie[0].DateStartRental)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CinemaMovie[0].DateEndRental)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CinemaMovie[0].Cinema)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CinemaMovie[0].Movie)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CinemaMovie[0].DateStartRental)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CinemaMovie[0].DateEndRental)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CinemaMovie[0].Cinema)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CinemaMovie[0].Movie)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.CinemaMovie) {
+    @foreach (CinemaMovie item in Model.CinemaMovie)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.DateStartRental)
@@ -49,6 +51,6 @@
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>

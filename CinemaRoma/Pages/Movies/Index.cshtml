@@ -1,4 +1,5 @@
 ﻿@page
+@using CinemaRoma.Models
 @model CinemaRoma.Pages.Movies.IndexModel
 
 @{
@@ -12,30 +13,31 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Duration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].RentelDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Genre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Producer)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie[0].Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie[0].Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie[0].Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie[0].RentelDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie[0].Genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie[0].Producer)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Movie) {
+    @foreach (Movie item in Model.Movie)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -56,11 +58,20 @@
                 @Html.DisplayFor(modelItem => item.Producer.FirstName)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-page="./Edit"
+                   asp-route-id="@item.Id">
+                    Edit
+                </a> |
+                <a asp-page="./Details"
+                   asp-route-id="@item.Id">
+                    Details
+                </a> |
+                <a asp-page="./Delete"
+                   asp-route-id="@item.Id">
+                    Delete
+                </a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>

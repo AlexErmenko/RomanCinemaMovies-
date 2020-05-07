@@ -1,30 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+
+
+using CinemaRoma.Models;
+
+
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using CinemaRoma.Models;
 
 namespace CinemaRoma.Pages.CinemaMovies
 {
-    public class IndexModel : PageModel
+  public class IndexModel : PageModel
+  {
+    private readonly MovieContext _context;
+
+    public IList<CinemaMovie> CinemaMovie { get; set; }
+
+    public IndexModel(MovieContext context) { _context = context; }
+
+    public async Task OnGetAsync()
     {
-        private readonly CinemaRoma.Models.MovieContext _context;
-
-        public IndexModel(CinemaRoma.Models.MovieContext context)
-        {
-            _context = context;
-        }
-
-        public IList<CinemaMovie> CinemaMovie { get;set; }
-
-        public async Task OnGetAsync()
-        {
-            CinemaMovie = await _context.CinemaMovies
-                .Include(c => c.Cinema)
-                .Include(c => c.Movie).ToListAsync();
-        }
+      CinemaMovie = await _context.CinemaMovies.Include(c => c.Cinema).Include(c => c.Movie).ToListAsync();
     }
+  }
 }

@@ -1,4 +1,5 @@
 ﻿@page
+@using CinemaRoma.Models
 @model CinemaRoma.Pages.Producers.IndexModel
 
 @{
@@ -12,24 +13,25 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Director[0].FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Director[0].MiddleName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Director[0].LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Director[0].DateBirth)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Director[0].FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Director[0].MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Director[0].LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Director[0].DateBirth)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Director) {
+    @foreach (Director item in Model.Director)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
@@ -44,11 +46,20 @@
                 @Html.DisplayFor(modelItem => item.DateBirth)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-page="./Edit"
+                   asp-route-id="@item.Id">
+                    Edit
+                </a> |
+                <a asp-page="./Details"
+                   asp-route-id="@item.Id">
+                    Details
+                </a> |
+                <a asp-page="./Delete"
+                   asp-route-id="@item.Id">
+                    Delete
+                </a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
