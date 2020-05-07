@@ -12,15 +12,15 @@ namespace CinemaRoma.Pages.MovieActors
 {
   public class IndexModel : PageModel
   {
-    private readonly MovieContext _context;
+    private readonly MovieContext context;
 
     public IList<MovieActor> MovieActor { get; set; }
 
-    public IndexModel(MovieContext context) { _context = context; }
+    public IndexModel(MovieContext context) { this.context = context; }
 
     public async Task OnGetAsync()
     {
-      MovieActor = await _context.MovieActors.Include(m => m.Actor).Include(m => m.Movie).ToListAsync();
+      MovieActor = await context.MovieActors.Include(m => m.Actor).Include(m => m.Movie).ToListAsync();
     }
   }
 }

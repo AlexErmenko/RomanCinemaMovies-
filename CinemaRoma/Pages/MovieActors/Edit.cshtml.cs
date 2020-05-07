@@ -14,24 +14,24 @@ namespace CinemaRoma.Pages.MovieActors
 {
   public class EditModel : PageModel
   {
-    private readonly MovieContext _context;
+    private readonly MovieContext context;
 
     [BindProperty]
     public MovieActor MovieActor { get; set; }
 
-    public EditModel(MovieContext context) { _context = context; }
+    public EditModel(MovieContext context) { this.context = context; }
 
     public async Task<IActionResult> OnGetAsync(int? id)
     {
       if (id == null) return NotFound();
 
-      MovieActor = await _context.MovieActors.Include(m => m.Actor)
+      MovieActor = await context.MovieActors.Include(m => m.Actor)
                                  .Include(m => m.Movie)
                                  .FirstOrDefaultAsync(m => m.MovieId == id);
 
       if (MovieActor == null) return NotFound();
-      ViewData["ActorId"] = new SelectList(_context.Actors, "Id", "FirstName");
-      ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "Description");
+      ViewData["ActorId"] = new SelectList(context.Actors, "Id", "FirstName");
+      ViewData["MovieId"] = new SelectList(context.Movies, "Id", "Description");
       return Page();
     }
 
@@ -42,9 +42,9 @@ namespace CinemaRoma.Pages.MovieActors
     {
       if (!ModelState.IsValid) return Page();
 
-      _context.Attach(MovieActor).State = EntityState.Modified;
+      context.Attach(MovieActor).State = EntityState.Modified;
 
-      try { await _context.SaveChangesAsync(); }
+      try { await context.SaveChangesAsync(); }
       catch (DbUpdateConcurrencyException)
       {
         if (!MovieActorExists(MovieActor.MovieId))
@@ -55,6 +55,6 @@ namespace CinemaRoma.Pages.MovieActors
       return RedirectToPage("./Index");
     }
 
-    private bool MovieActorExists(int id) { return _context.MovieActors.Any(e => e.MovieId == id); }
+    private bool MovieActorExists(int id) { return context.MovieActors.Any(e => e.MovieId == id); }
   }
 }

@@ -28,10 +28,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Actor.FirstName)
+                @Html.DisplayFor(modelItem => item.Actor.FullName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Movie.Description)
+                @Html.DisplayFor(modelItem => item.Movie.Title)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

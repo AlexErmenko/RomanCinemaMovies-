@@ -12,17 +12,17 @@ namespace CinemaRoma.Pages.MovieActors
 {
   public class CreateModel : PageModel
   {
-    private readonly MovieContext _context;
+    private readonly MovieContext context;
 
     [BindProperty]
     public MovieActor MovieActor { get; set; }
 
-    public CreateModel(MovieContext context) { _context = context; }
+    public CreateModel(MovieContext context) { this.context = context; }
 
     public IActionResult OnGet()
     {
-      ViewData["ActorId"] = new SelectList(_context.Actors, "Id", "FirstName");
-      ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "Description");
+      ViewData["ActorId"] = new SelectList(context.Actors, "Id", "FullName");
+      ViewData["MovieId"] = new SelectList(context.Movies, "Id", "Title");
       return Page();
     }
 
@@ -33,8 +33,8 @@ namespace CinemaRoma.Pages.MovieActors
     {
       if (!ModelState.IsValid) return Page();
 
-      _context.MovieActors.Add(MovieActor);
-      await _context.SaveChangesAsync();
+      context.MovieActors.Add(MovieActor);
+      await context.SaveChangesAsync();
 
       return RedirectToPage("./Index");
     }

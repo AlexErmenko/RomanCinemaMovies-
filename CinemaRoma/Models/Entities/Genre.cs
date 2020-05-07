@@ -14,8 +14,10 @@ namespace CinemaRoma.Models
         }
 
         public int Id { get; set; }
+
         [Display(ResourceType = typeof(Resources), Name = "GenreName")]
-        public int Name { get; set; }
+        [MinLength(3)]
+        public string Name { get; set; }
 
         public virtual ICollection<Movie> Movies { get; set; }
 

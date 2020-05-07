@@ -12,18 +12,18 @@ namespace CinemaRoma.Pages.MovieActors
 {
   public class DeleteModel : PageModel
   {
-    private readonly MovieContext _context;
+    private readonly MovieContext context;
 
     [BindProperty]
     public MovieActor MovieActor { get; set; }
 
-    public DeleteModel(MovieContext context) { _context = context; }
+    public DeleteModel(MovieContext context) { this.context = context; }
 
     public async Task<IActionResult> OnGetAsync(int? id)
     {
       if (id == null) return NotFound();
 
-      MovieActor = await _context.MovieActors.Include(m => m.Actor)
+      MovieActor = await context.MovieActors.Include(m => m.Actor)
                                  .Include(m => m.Movie)
                                  .FirstOrDefaultAsync(m => m.MovieId == id);
 
@@ -35,12 +35,12 @@ namespace CinemaRoma.Pages.MovieActors
     {
       if (id == null) return NotFound();
 
-      MovieActor = await _context.MovieActors.FindAsync(id);
+      MovieActor = await context.MovieActors.FindAsync(id);
 
       if (MovieActor != null)
       {
-        _context.MovieActors.Remove(MovieActor);
-        await _context.SaveChangesAsync();
+        context.MovieActors.Remove(MovieActor);
+        await context.SaveChangesAsync();
       }
 
       return RedirectToPage("./Index");

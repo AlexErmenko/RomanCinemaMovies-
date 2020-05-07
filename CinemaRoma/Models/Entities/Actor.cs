@@ -20,12 +20,16 @@ namespace CinemaRoma.Models
 
         [Display(ResourceType = typeof(Resources) , Name = "ActorFirstName")]
         public string FirstName { get; set; }
+
         [Display(ResourceType = typeof(Resources), Name = "ActorMiddleName")]
         public string MiddleName { get; set; }
+
         [Display(ResourceType = typeof(Resources), Name = "ActorLastName")]
         public string LastName { get; set; }
 
         [Display(ResourceType = typeof(Resources), Name = "DateBirth")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true,DataFormatString = "{0:dd'.'MM'.'yyyy}")]
         public DateTime DateBirth { get; set; }
 
         public virtual ICollection<MovieActor> MovieActors { get; set; }

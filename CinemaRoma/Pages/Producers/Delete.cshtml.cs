@@ -1,47 +1,58 @@
-﻿using System.Threading.Tasks;
-
-
-using CinemaRoma.Models;
-
-
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using CinemaRoma.Models;
 
 namespace CinemaRoma.Pages.Producers
 {
-  public class DeleteModel : PageModel
-  {
-    private readonly MovieContext _context;
-
-    [BindProperty]
-    public Director Director { get; set; }
-
-    public DeleteModel(MovieContext context) { _context = context; }
-
-    public async Task<IActionResult> OnGetAsync(int? id)
+    public class DeleteModel : PageModel
     {
-      if (id == null) return NotFound();
+        private readonly MovieContext context;
 
-      Director = await _context.Directors.FirstOrDefaultAsync(m => m.Id == id);
+        public DeleteModel(MovieContext context)
+        {
+            this.context = context;
+        }
 
-      if (Director == null) return NotFound();
-      return Page();
+        [BindProperty]
+        public Director Director { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Director = await context.Directors.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (Director == null)
+            {
+                return NotFound();
+            }
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Director = await context.Directors.FindAsync(id);
+
+            if (Director != null)
+            {
+                context.Directors.Remove(Director);
+                await context.SaveChangesAsync();
+            }
+
+            return RedirectToPage("./Index");
+        }
     }
-
-    public async Task<IActionResult> OnPostAsync(int? id)
-    {
-      if (id == null) return NotFound();
-
-      Director = await _context.Directors.FindAsync(id);
-
-      if (Director != null)
-      {
-        _context.Directors.Remove(Director);
-        await _context.SaveChangesAsync();
-      }
-
-      return RedirectToPage("./Index");
-    }
-  }
 }

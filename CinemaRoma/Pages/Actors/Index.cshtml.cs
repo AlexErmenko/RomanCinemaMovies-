@@ -1,23 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 
-using CinemaRoma.Models;
-
-
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+
+
+using CinemaRoma.Models;
 
 namespace CinemaRoma.Pages.Actors
 {
   public class IndexModel : PageModel
   {
-    private readonly MovieContext _context;
+    private readonly MovieContext context;
 
+    public IndexModel(MovieContext context) { this.context = context; }
+
+    [BindProperty(SupportsGet = true)]
     public IList<Actor> Actor { get; set; }
 
-    public IndexModel(MovieContext context) { _context = context; }
-
-    public async Task OnGetAsync() { Actor = await _context.Actors.ToListAsync(); }
+    public async Task OnGetAsync() { Actor = await context.Actors.ToListAsync(); }
   }
 }

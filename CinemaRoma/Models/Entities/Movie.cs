@@ -16,28 +16,46 @@ namespace CinemaRoma.Models
 
         public int Id { get; set; }
         [Display(ResourceType = typeof(Resources), Name = "Title")]
+        [DataType(DataType.Text)]
+        [MinLength(5)]
+        [Required]
         public string Title { get; set; }
-        [Display(ResourceType = typeof(Resources), Name = "Description")] 
+
+        [Display(ResourceType = typeof(Resources), Name = "Description")]
+        [MinLength(3)]
+        [Required]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
+
         [Display(ResourceType = typeof(Resources), Name = "Duration")]
+        [Required]
         public int Duration { get; set; }
+
+
+
         [Display(ResourceType = typeof(Resources), Name = "DateStartRental")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true,DataFormatString = "{0:dd'.'MM'.'yyyy}")]
+        [Required]
         public DateTime RentelDate { get; set; }
+
         public int ProducerId { get; set; }
         public int GenreId { get; set; }
 
         [Display(ResourceType = typeof(Resources), Name = "GenreName")]
+
         public virtual Genre Genre { get; set; }
+
         [Display(ResourceType = typeof(Resources), Name = "Producer")]
+
         public virtual Director Producer { get; set; }
+
         public virtual ICollection<CinemaMovie> CinemaMovies { get; set; }
         public virtual ICollection<MovieActor> MovieActors { get; set; }
 
         public override string ToString()
         {
             return $"{Title}";
-
-
         }
     }
 }

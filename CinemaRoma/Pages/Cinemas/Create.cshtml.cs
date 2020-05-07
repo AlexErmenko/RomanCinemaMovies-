@@ -1,36 +1,44 @@
-﻿using System.Threading.Tasks;
-
-
-using CinemaRoma.Models;
-
-
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using CinemaRoma.Models;
 
 namespace CinemaRoma.Pages.Cinemas
 {
-  public class CreateModel : PageModel
-  {
-    private readonly MovieContext _context;
-
-    [BindProperty]
-    public Cinema Cinema { get; set; }
-
-    public CreateModel(MovieContext context) { _context = context; }
-
-    public IActionResult OnGet() { return Page(); }
-
-
-    // To protect from overposting attacks, enable the specific properties you want to bind to, for
-    // more details, see https://aka.ms/RazorPagesCRUD.
-    public async Task<IActionResult> OnPostAsync()
+    public class CreateModel : PageModel
     {
-      if (!ModelState.IsValid) return Page();
+        private readonly MovieContext context;
 
-      _context.Cinemas.Add(Cinema);
-      await _context.SaveChangesAsync();
+        public CreateModel(MovieContext context)
+        {
+            this.context = context;
+        }
 
-      return RedirectToPage("./Index");
+        public IActionResult OnGet()
+        {
+            return Page();
+        }
+
+        [BindProperty]
+        public Cinema Cinema { get; set; }
+
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://aka.ms/RazorPagesCRUD.
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            context.Cinemas.Add(Cinema);
+            await context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
+        }
     }
-  }
 }

@@ -1,5 +1,4 @@
 ﻿@page
-@using CinemaRoma.Models
 @model CinemaRoma.Pages.CinemaMovies.IndexModel
 
 @{
@@ -15,24 +14,30 @@
     <thead>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CinemaMovie[0].DateStartRental)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CinemaMovie[0].DateEndRental)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.CinemaMovie[0].Cinema)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CinemaMovie[0].Movie)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CinemaMovie[0].DateStartRental)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CinemaMovie[0].DateEndRental)
+        </th>
         <th></th>
     </tr>
     </thead>
     <tbody>
-    @foreach (CinemaMovie item in Model.CinemaMovie)
+    @foreach (var item in Model.CinemaMovie)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cinema.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie.Title)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateStartRental)
             </td>
@@ -40,15 +45,21 @@
                 @Html.DisplayFor(modelItem => item.DateEndRental)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cinema.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Movie.Description)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                <a asp-page="./Edit"
+                   asp-route-id="@item.MovieId">
+                    Edit
+                </a> |
+                <a asp-page="./Details"
+                   asp-route-id="@item.MovieId">
+                    Details
+                </a> |
+                <a asp-page="./Delete"
+                   asp-route-id="@item.MovieId">
+                    Delete
+                </a>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
             </td>
         </tr>
     }

@@ -16,13 +16,14 @@ namespace CinemaRoma.Models
         public int Id { get; set; }
         [Display(ResourceType = typeof(Resources), Name = "Location")]
         public string Location { get; set; }
+
         [Display(ResourceType = typeof(Resources), Name = "Address")]
         public string Address { get; set; }
 
         public virtual ICollection<CinemaMovie> CinemaMovies { get; set; }
 
         public override string ToString() => $"{Location}";
-        
-        
+
+
     }
 }
