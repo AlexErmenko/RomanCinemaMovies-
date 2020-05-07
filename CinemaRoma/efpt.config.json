@@ -1,0 +1,51 @@
+﻿{
+   "ContextClassName": "MovieContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "DoNotCombineNamespace": false,
+   "IdReplace": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": "Models",
+   "OutputPath": "Models",
+   "ProjectRootNamespace": "CinemaRoma",
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Actor]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Cinema]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[CinemaMovies]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Director]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Genres]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Movie]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[MovieActor]"
+      }
+   ],
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseSpatial": false
+}

@@ -1,0 +1,54 @@
+﻿@page
+@model CinemaRoma.Pages.CinemaMovies.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CinemaMovie[0].DateStartRental)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CinemaMovie[0].DateEndRental)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CinemaMovie[0].Cinema)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CinemaMovie[0].Movie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.CinemaMovie) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateStartRental)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateEndRental)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cinema.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
