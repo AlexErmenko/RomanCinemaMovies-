@@ -2,13 +2,13 @@
 @model CinemaRoma.Pages.CinemaMovies.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Прокат в кинотеатрах";
 }
 
-<h1>Index</h1>
+<h1>Прокат в кинотеатрах</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Добавить запись</a>
 </p>
 <table class="table">
     <thead>
@@ -54,7 +54,8 @@
                     Details
                 </a> |
                 <a asp-page="./Delete"
-                   asp-route-id="@item.MovieId">
+                   asp-route-idCinema="@item.CinemaId"
+                   asp-route-idMovie="@item.MovieId">
                     Delete
                 </a>
                 @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

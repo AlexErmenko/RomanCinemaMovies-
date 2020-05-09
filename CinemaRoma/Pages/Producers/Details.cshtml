@@ -1,15 +1,12 @@
 ﻿@page
 @model CinemaRoma.Pages.Producers.DetailsModel
 
-@{
-    ViewData["Title"] = "Details";
-}
 
-<h1>Details</h1>
+<h1>Подробнее</h1>
 
 <div>
-    <h4>Director</h4>
-    <hr />
+
+    <hr/>
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Director.FirstName)
@@ -38,6 +35,6 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Director.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Director.Id">Изменить запись</a> |
+    <a asp-page="./Index">Назад</a>
 </div>

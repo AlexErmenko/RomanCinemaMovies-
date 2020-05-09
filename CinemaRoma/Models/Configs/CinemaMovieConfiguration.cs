@@ -24,7 +24,7 @@ namespace CinemaRoma.Models
                 .HasConstraintName("CinemaMovies_Cinema_Id_fk");
 
             entity.HasOne(d => d.Movie)
-                .WithMany(p => p.CinemaMovies)
+                .WithMany(p => p.CinemaMovie)
                 .HasForeignKey(d => d.MovieId)
                 .HasConstraintName("GenreMovies_Movie_Id_fk");
         }

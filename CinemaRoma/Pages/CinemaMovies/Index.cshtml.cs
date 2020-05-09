@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using CinemaRoma.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using CinemaRoma.Models;
 
 namespace CinemaRoma.Pages.CinemaMovies
 {
@@ -18,7 +15,7 @@ namespace CinemaRoma.Pages.CinemaMovies
             this.context = context;
         }
 
-        public IList<CinemaMovie> CinemaMovie { get;set; }
+        public IList<CinemaMovie> CinemaMovie { get; set; }
 
         public async Task OnGetAsync()
         {

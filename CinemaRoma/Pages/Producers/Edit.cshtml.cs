@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using CinemaRoma.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using CinemaRoma.Models;
 
 namespace CinemaRoma.Pages.Producers
 {
@@ -19,22 +16,15 @@ namespace CinemaRoma.Pages.Producers
             this.context = context;
         }
 
-        [BindProperty]
-        public Director Director { get; set; }
+        [BindProperty] public Director Director { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             Director = await context.Directors.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Director == null)
-            {
-                return NotFound();
-            }
+            if (Director == null) return NotFound();
             return Page();
         }
 
@@ -42,10 +32,7 @@ namespace CinemaRoma.Pages.Producers
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            if (!ModelState.IsValid) return Page();
 
             context.Attach(Director).State = EntityState.Modified;
 
@@ -56,13 +43,8 @@ namespace CinemaRoma.Pages.Producers
             catch (DbUpdateConcurrencyException)
             {
                 if (!DirectorExists(Director.Id))
-                {
                     return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return RedirectToPage("./Index");

@@ -19,20 +19,23 @@ namespace CinemaRoma.Models
     public int Id { get; set; }
 
     [Display(ResourceType = typeof(Resources), Name = "ActorFirstName")]
+    [Required]
     [MinLength(3)]
     public string FirstName { get; set; }
 
     [Display(ResourceType = typeof(Resources), Name = "ActorMiddleName")]
+    [Required]
     [MinLength(3)]
 
     public string MiddleName { get; set; }
 
     [Display(ResourceType = typeof(Resources), Name = "ActorLastName")]
+    [Required]
     [MinLength(3)]
 
     public string LastName { get; set; }
 
-    [Display(ResourceType = typeof(Resources), Name = "DateEndRental")]
+    [Display(ResourceType = typeof(Resources), Name = "DateBirth")]
     [DataType(DataType.Date)]
     [DisplayFormat(ApplyFormatInEditMode = true,DataFormatString = "{0:dd'.'MM'.'yyyy}")]
     public DateTime DateBirth { get; set; }
@@ -41,7 +44,7 @@ namespace CinemaRoma.Models
 
     [Display(ResourceType = typeof(Resources), Name = "ActorFullName")]
     [NotMapped]
-    public string FullName => $"{MiddleName} {FirstName[0]}.{LastName[0]}.";
+    public string FullName => $"{MiddleName} {FirstName?[0]}.{LastName?[0]}.";
 
 
     public override string ToString() => $"{FullName}";

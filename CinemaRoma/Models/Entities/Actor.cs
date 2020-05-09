@@ -18,18 +18,28 @@ namespace CinemaRoma.Models
 
         public int Id { get; set; }
 
-        [Display(ResourceType = typeof(Resources) , Name = "ActorFirstName")]
+        [Display(ResourceType = typeof(Resources), Name = "ActorFirstName")]
+        [Required]
+        [MinLength(2, ErrorMessage = "Неверный формат имени шаблона")]
+        [MaxLength(20/*, ErrorMessage = "Неверный формат имени шаблона"*/)]
         public string FirstName { get; set; }
 
         [Display(ResourceType = typeof(Resources), Name = "ActorMiddleName")]
+        [Required]
+        [MinLength(2, ErrorMessage = "Неверный формат имени шаблона")]
+        [MaxLength(20, ErrorMessage = "Неверный формат имени шаблона")]
         public string MiddleName { get; set; }
 
         [Display(ResourceType = typeof(Resources), Name = "ActorLastName")]
+        [MinLength(2, ErrorMessage = "Неверный формат имени шаблона")]
+        [Required]
+        [MaxLength(20, ErrorMessage = "Неверный формат имени шаблона")]
         public string LastName { get; set; }
 
         [Display(ResourceType = typeof(Resources), Name = "DateBirth")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true,DataFormatString = "{0:dd'.'MM'.'yyyy}")]
+        [DataType(DataType.DateTime)]
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateBirth { get; set; }
 
         public virtual ICollection<MovieActor> MovieActors { get; set; }
@@ -38,7 +48,7 @@ namespace CinemaRoma.Models
 
         [Display(ResourceType = typeof(Resources), Name = "ActorFullName")]
         [NotMapped]
-        public string FullName => $"{MiddleName} {FirstName[0]}.{LastName[0]}.";
+        public string FullName => $"{MiddleName} {FirstName?[0]}.{LastName?[0]}.";
 
 
         public override string ToString() => $"{FullName}";

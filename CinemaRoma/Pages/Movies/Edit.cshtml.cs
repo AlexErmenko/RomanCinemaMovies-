@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using CinemaRoma.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using CinemaRoma.Models;
 
 namespace CinemaRoma.Pages.Movies
 {
@@ -19,26 +17,19 @@ namespace CinemaRoma.Pages.Movies
             this.context = context;
         }
 
-        [BindProperty]
-        public Movie Movie { get; set; }
+        [BindProperty] public Movie Movie { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             Movie = await context.Movies
                 .Include(m => m.Genre)
                 .Include(m => m.Producer).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Movie == null)
-            {
-                return NotFound();
-            }
-           ViewData["GenreId"] = new SelectList(context.Genres, "Id", "Id");
-           ViewData["ProducerId"] = new SelectList(context.Directors, "Id", "FirstName");
+            if (Movie == null) return NotFound();
+            ViewData["GenreId"] = new SelectList(context.Genres, "Id", "Name");
+            ViewData["ProducerId"] = new SelectList(context.Directors, "Id", "FirstName");
             return Page();
         }
 
@@ -46,10 +37,7 @@ namespace CinemaRoma.Pages.Movies
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            if (!ModelState.IsValid) return Page();
 
             context.Attach(Movie).State = EntityState.Modified;
 
@@ -60,13 +48,8 @@ namespace CinemaRoma.Pages.Movies
             catch (DbUpdateConcurrencyException)
             {
                 if (!MovieExists(Movie.Id))
-                {
                     return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return RedirectToPage("./Index");

@@ -1,16 +1,13 @@
 ﻿@page
 @model CinemaRoma.Pages.CinemaMovies.DeleteModel
 
-@{
-    ViewData["Title"] = "Delete";
-}
 
-<h1>Delete</h1>
+<h1>Удаление записи</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+
 <div>
-    <h4>CinemaMovie</h4>
-    <hr />
+
+    <hr/>
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CinemaMovie.DateStartRental)
@@ -37,11 +34,11 @@
             @Html.DisplayFor(model => model.CinemaMovie.Movie.Description)
         </dd>
     </dl>
-    
+
     <form method="post">
-        <input type="hidden" asp-for="CinemaMovie.MovieId" />
-        <input type="hidden" asp-for="CinemaMovie.CinemaId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <input type="hidden" asp-for="CinemaMovie.MovieId"/>
+        <input type="hidden" asp-for="CinemaMovie.CinemaId"/>
+        <input type="submit" value="Удалить" class="btn btn-danger"/> |
+        <a asp-page="./Index">Назад</a>
     </form>
 </div>

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using CinemaRoma.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using CinemaRoma.Models;
 
 namespace CinemaRoma.Pages.CinemaMovies
 {
@@ -19,27 +17,20 @@ namespace CinemaRoma.Pages.CinemaMovies
             this.context = context;
         }
 
-        [BindProperty]
-        public CinemaMovie CinemaMovie { get; set; }
+        [BindProperty] public CinemaMovie CinemaMovie { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             CinemaMovie = await context.CinemaMovies
                 .Include(c => c.Cinema)
                 .Include(c => c.Movie).FirstOrDefaultAsync(m => m.MovieId == id);
 
-            if (CinemaMovie == null)
-            {
-                return NotFound();
-            }
+            if (CinemaMovie == null) return NotFound();
 
-           ViewData["CinemaId"] = new SelectList(context.Cinemas, "Id", "Location");
-           ViewData["MovieId"] = new SelectList(context.Movies, "Id", "Title");
+            ViewData["CinemaId"] = new SelectList(context.Cinemas, "Id", "Location");
+            ViewData["MovieId"] = new SelectList(context.Movies, "Id", "Title");
             return Page();
         }
 
@@ -47,10 +38,7 @@ namespace CinemaRoma.Pages.CinemaMovies
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            if (!ModelState.IsValid) return Page();
 
             context.Attach(CinemaMovie).State = EntityState.Modified;
 
@@ -61,13 +49,8 @@ namespace CinemaRoma.Pages.CinemaMovies
             catch (DbUpdateConcurrencyException)
             {
                 if (!CinemaMovieExists(CinemaMovie.MovieId))
-                {
                     return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return RedirectToPage("./Index");

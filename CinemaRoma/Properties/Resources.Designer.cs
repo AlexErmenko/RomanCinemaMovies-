@@ -61,7 +61,7 @@ namespace CinemaRoma.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Актер.
+        ///   Ищет локализованную строку, похожую на Актёр.
         /// </summary>
         public static string Actor {
             get {
@@ -178,7 +178,16 @@ namespace CinemaRoma.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Название Кинотеатра.
+        ///   Ищет локализованную строку, похожую на Error.
+        /// </summary>
+        public static string Global_Errors {
+            get {
+                return ResourceManager.GetString("Global_Errors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Название кинотеатра.
         /// </summary>
         public static string Location {
             get {
@@ -210,6 +219,15 @@ namespace CinemaRoma.Properties {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Год выпуска.
+        /// </summary>
+        public static string Year_of_issue {
+            get {
+                return ResourceManager.GetString("Year_of_issue", resourceCulture);
             }
         }
     }

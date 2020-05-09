@@ -8,17 +8,19 @@ namespace CinemaRoma.Models
 {
     public partial class CinemaMovie
     {
+        [Display(ResourceType = typeof(Resources), Name = "Title")]
         public int MovieId { get; set; }
+        [Display(ResourceType = typeof(Resources), Name = "Location")]
         public int CinemaId { get; set; }
         [Display(ResourceType = typeof(Resources), Name = "DateStartRental")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true,DataFormatString = "{0:dd'.'MM'.'yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateStartRental { get; set; }
 
 
-        [Display(ResourceType = typeof(Resources), Name = "DateBirth")]
+        [Display(ResourceType = typeof(Resources), Name = "DateEndRental")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true,DataFormatString = "{0:dd'.'MM'.'yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateEndRental { get; set; }
 
         [Display(ResourceType = typeof(Resources), Name = "Cinema")]

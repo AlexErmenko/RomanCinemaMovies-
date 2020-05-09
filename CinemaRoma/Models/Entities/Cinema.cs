@@ -15,9 +15,11 @@ namespace CinemaRoma.Models
 
         public int Id { get; set; }
         [Display(ResourceType = typeof(Resources), Name = "Location")]
+        [Required]
         public string Location { get; set; }
 
         [Display(ResourceType = typeof(Resources), Name = "Address")]
+        [Required]
         public string Address { get; set; }
 
         public virtual ICollection<CinemaMovie> CinemaMovies { get; set; }

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Actor" xml:space="preserve">
-    <value>Актер</value>
+    <value>Актёр</value>
   </data>
   <data name="ActorFirstName" xml:space="preserve">
     <value>Имя</value>
@@ -156,8 +156,11 @@
   <data name="GenreName" xml:space="preserve">
     <value>Жанр</value>
   </data>
+  <data name="Global_Errors" xml:space="preserve">
+    <value>Error</value>
+  </data>
   <data name="Location" xml:space="preserve">
-    <value>Название Кинотеатра</value>
+    <value>Название кинотеатра</value>
   </data>
   <data name="Movie" xml:space="preserve">
     <value>Фильм</value>
@@ -167,5 +170,8 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Название</value>
+  </data>
+  <data name="Year_of_issue" xml:space="preserve">
+    <value>Год выпуска</value>
   </data>
 </root>

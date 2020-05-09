@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using CinemaRoma.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using CinemaRoma.Models;
 
 namespace CinemaRoma.Pages.Cinemas
 {
@@ -22,17 +19,11 @@ namespace CinemaRoma.Pages.Cinemas
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             Cinema = await context.Cinemas.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Cinema == null)
-            {
-                return NotFound();
-            }
+            if (Cinema == null) return NotFound();
             return Page();
         }
     }

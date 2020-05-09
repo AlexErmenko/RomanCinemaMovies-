@@ -10,8 +10,8 @@ namespace CinemaRoma.Models
     {
         public Movie()
         {
-            CinemaMovies = new HashSet<CinemaMovie>();
-            MovieActors = new HashSet<MovieActor>();
+            CinemaMovie = new HashSet<CinemaMovie>();
+            MovieActor = new HashSet<MovieActor>();
         }
 
         public int Id { get; set; }
@@ -33,13 +33,17 @@ namespace CinemaRoma.Models
 
 
 
-        [Display(ResourceType = typeof(Resources), Name = "DateStartRental")]
+        [Display(ResourceType = typeof(Resources), Name = "Year_of_issue")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true,DataFormatString = "{0:dd'.'MM'.'yyyy}")]
         [Required]
         public DateTime RentelDate { get; set; }
+        
+        [Display(ResourceType = typeof(Resources), Name = "Producer")]
 
         public int ProducerId { get; set; }
+
+        [Display(ResourceType = typeof(Resources), Name = "GenreName")]
         public int GenreId { get; set; }
 
         [Display(ResourceType = typeof(Resources), Name = "GenreName")]
@@ -50,8 +54,8 @@ namespace CinemaRoma.Models
 
         public virtual Director Producer { get; set; }
 
-        public virtual ICollection<CinemaMovie> CinemaMovies { get; set; }
-        public virtual ICollection<MovieActor> MovieActors { get; set; }
+        public virtual ICollection<CinemaMovie> CinemaMovie { get; set; }
+        public virtual ICollection<MovieActor> MovieActor { get; set; }
 
         public override string ToString()
         {

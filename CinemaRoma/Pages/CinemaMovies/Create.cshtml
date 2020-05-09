@@ -1,47 +1,44 @@
 ﻿@page
 @model CinemaRoma.Pages.CinemaMovies.CreateModel
 
-@{
-    ViewData["Title"] = "Create";
-}
 
-<h1>Create</h1>
+<h1>Добавление записи</h1>
 
-<h4>CinemaMovie</h4>
-<hr />
+<h4>Прокат в кинотеатрах</h4>
+<hr/>
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="CinemaMovie.MovieId" class="control-label"></label>
-                <select asp-for="CinemaMovie.MovieId" class ="form-control" asp-items="ViewBag.MovieId"></select>
+                <select asp-for="CinemaMovie.MovieId" class="form-control" asp-items="ViewBag.MovieId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="CinemaMovie.CinemaId" class="control-label"></label>
-                <select asp-for="CinemaMovie.CinemaId" class ="form-control" asp-items="ViewBag.CinemaId"></select>
+                <select asp-for="CinemaMovie.CinemaId" class="form-control" asp-items="ViewBag.CinemaId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="CinemaMovie.DateStartRental" class="control-label"></label>
-                <input asp-for="CinemaMovie.DateStartRental" class="form-control" />
+                <input asp-for="CinemaMovie.DateStartRental" class="form-control"/>
                 <span asp-validation-for="CinemaMovie.DateStartRental" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CinemaMovie.DateEndRental" class="control-label"></label>
-                <input asp-for="CinemaMovie.DateEndRental" class="form-control" />
+                <input asp-for="CinemaMovie.DateEndRental" class="form-control"/>
                 <span asp-validation-for="CinemaMovie.DateEndRental" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Добавить" class="btn btn-primary"/>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">Назад</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

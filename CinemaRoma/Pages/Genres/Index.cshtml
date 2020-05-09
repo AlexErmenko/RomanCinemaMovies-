@@ -2,25 +2,26 @@
 @model CinemaRoma.Pages.Genres.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Жанры";
 }
 
-<h1>Index</h1>
+<h1>Жанры</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Добавить запись</a>
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Genre[0].Name)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre[0].Name)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Genre) {
+    @foreach (var item in Model.Genre)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -31,6 +32,6 @@
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>

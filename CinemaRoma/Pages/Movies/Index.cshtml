@@ -2,40 +2,41 @@
 @model CinemaRoma.Pages.Movies.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Фильмы";
 }
 
-<h1>Index</h1>
+<h1>Фильмы</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Добавить запись</a>
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Duration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].RentelDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Genre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Producer)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie[0].Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie[0].Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie[0].Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie[0].RentelDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie[0].Genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie[0].Producer)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Movie) {
+    @foreach (var item in Model.Movie)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -50,10 +51,10 @@
                 @Html.DisplayFor(modelItem => item.RentelDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Genre.Id)
+                @Html.DisplayFor(modelItem => item.Genre.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Producer.FirstName)
+                @Html.DisplayFor(modelItem => item.Producer.FullName)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
@@ -61,6 +62,6 @@
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
