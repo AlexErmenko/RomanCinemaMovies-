@@ -15,7 +15,8 @@ namespace CinemaRoma.Pages.MovieActors
             this.context = context;
         }
 
-        [BindProperty] public MovieActor MovieActor { get; set; }
+        [BindProperty]
+        public MovieActor MovieActor { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

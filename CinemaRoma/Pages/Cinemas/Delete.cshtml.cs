@@ -15,7 +15,8 @@ namespace CinemaRoma.Pages.Cinemas
             this.context = context;
         }
 
-        [BindProperty] public Cinema Cinema { get; set; }
+        [BindProperty]
+        public Cinema Cinema { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

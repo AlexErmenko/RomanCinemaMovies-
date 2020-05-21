@@ -15,7 +15,8 @@ namespace CinemaRoma.Pages.CinemaMovies
             this.context = context;
         }
 
-        [BindProperty] public CinemaMovie CinemaMovie { get; set; }
+        [BindProperty]
+        public CinemaMovie CinemaMovie { get; set; }
 
         public IActionResult OnGet()
         {

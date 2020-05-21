@@ -14,7 +14,8 @@ namespace CinemaRoma.Pages.Producers
             this.context = context;
         }
 
-        [BindProperty] public Director Director { get; set; }
+        [BindProperty]
+        public Director Director { get; set; }
 
         public IActionResult OnGet()
         {

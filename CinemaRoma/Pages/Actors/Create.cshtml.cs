@@ -14,7 +14,8 @@ namespace CinemaRoma.Pages.Actors
             this.context = context;
         }
 
-        [BindProperty] public Actor Actor { get; set; }
+        [BindProperty]
+        public Actor Actor { get; set; }
 
         public IActionResult OnGet()
         {

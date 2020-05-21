@@ -16,7 +16,8 @@ namespace CinemaRoma.Pages.Actors
             this.context = context;
         }
 
-        [BindProperty(SupportsGet = true)] public IList<Actor> Actor { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public IList<Actor> Actor { get; set; }
 
         public async Task OnGetAsync()
         {

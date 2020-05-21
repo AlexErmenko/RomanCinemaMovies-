@@ -5566,7 +5566,7 @@
 	        for (var key in events) {
 	          var _ret = _loop(key);
 
-	          if (_ret === "continue") continue;
+	          if (_ret === "continue")
 	        }
 	      });
 	    }

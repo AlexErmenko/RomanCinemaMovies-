@@ -14,7 +14,8 @@ namespace CinemaRoma.Pages.Genres
             this.context = context;
         }
 
-        [BindProperty] public Genre Genre { get; set; }
+        [BindProperty]
+        public Genre Genre { get; set; }
 
         public IActionResult OnGet()
         {
